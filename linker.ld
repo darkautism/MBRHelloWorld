@@ -22,13 +22,4 @@ SECTIONS
     {
         SHORT(0xaa55);
     }
-    /DISCARD/ :
-    {
-        *(.note*);
-        *(.iplt*);
-        *(.igot*);
-        *(.rel*);
-        *(.comment);
-/* add any unwanted sections spewed out by your version of gcc and flags here */
-    }
 }
