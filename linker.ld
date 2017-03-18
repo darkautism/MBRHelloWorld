@@ -4,6 +4,7 @@ SECTIONS
     . = 0x7C00;
     .text : AT(0x7C00)
     {
+        *(__start);
         _text = .;
         *(.text);
         _text_end = .;

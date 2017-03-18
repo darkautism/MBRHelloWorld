@@ -12,7 +12,6 @@
 #endif
 
 asm(".code16gcc\n");
-asm ("jmp main\n") ;
 
 #define __NOINLINE  __attribute__((noinline))
 #define __REGPARM   __attribute__ ((regparm(3)))
@@ -60,7 +59,7 @@ failed:
 }
 
 /* and for everything else you can use C! Be it traversing the filesystem, or verifying the kernel image etc.*/
-void __NORETURN main(){
+void __NORETURN __attribute__((section("__start"))) main(){
  	unsigned char bios_drive = 0;
 	asm volatile("movb  %%dl, %b0" : "=r"(bios_drive));      /* the BIOS drive number of the device we booted from is passed in dl register */
 	print("Hello World!\r\n");
