@@ -62,9 +62,8 @@ failed:
 void __NORETURN __attribute__((section("__start"))) main(){
  	unsigned char bios_drive = 0;
 	asm volatile("movb  %%dl, %b0" : "=r"(bios_drive));      /* the BIOS drive number of the device we booted from is passed in dl register */
-	print("Hello World!\r\n");
+	print("Hello, MBR!\r\n");
 	lba_load_sector(bios_drive);
-	print("Boot bootloader...\r\n");
 	asm volatile ( // must tell GRUB stage 2 the structure offset and boot drive
 		"movw	%w1, %%si\n"
 		"xorb	%%dh, %%dh\n"
